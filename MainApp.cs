@@ -3,15 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace SimpleWindow
+
+namespace UsingApplication
 {
-    class MainApp : System.Windows.Forms.Form
+    class MainApp : Form
     {
         static void Main(string[] args)
         {
-            System.Windows.Forms.Application.Run(new MainApp()); //  기본 창 생성
-            
+            MainApp form = new MainApp();
+
+            form.Click += new EventHandler(
+                (sender, eventArgs) =>
+                {
+                    Console.WriteLine("Closing Window...");
+                    Application.Exit();
+                });
+
+            Console.WriteLine("Starting Window Application...");
+            Application.Run(form);
+
+            Console.WriteLine("Exiting Window Application...");
         }
     }
 }
